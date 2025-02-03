@@ -13,8 +13,21 @@ const inventaire = [
   },
 ];
 
+// exo 1 Salutation Aventurier
+
 function salutations(nom_sorcier_new){
-    console.log(`Salutations Aventurier ! Je me nomme ${nom_sorcier_new} pour vous servir.`)
+    return (`Salutations Aventurier ! Je me nomme ${nom_sorcier_new} pour vous servir.`);
 };
 
-salutations(nom_sorcier);
+console.log(salutations(nom_sorcier));
+
+// exo 2 Quel est le tarif d'une potion ?
+
+function info_potion(potion_id, qnt_demande){
+       prix_tot = potion_id * qnt_demande;
+       return prix_tot;
+}
+
+console.log(info_potion(10, 3));
+
+//
