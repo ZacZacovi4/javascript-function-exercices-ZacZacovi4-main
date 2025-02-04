@@ -23,11 +23,22 @@ console.log(salutations(nom_sorcier));
 
 // exo 2 Quel est le tarif d'une potion ?
 
-function info_potion(potion_id, qnt_demande){
-       prix_tot = potion_id * qnt_demande;
-       return prix_tot;
+/**
+ * 
+ * @param {string} potion_id 
+ * @param {Array} inventaire 
+ * @param {number} [qnt_demande = 1 par default]
+ * @returns {number} prix_tot
+ */
+function prix_potion(potion_id, inventaire, qnt_demande = 1){
+  const a =inventaire.find(function(item){
+      return item.id === potion_id;
+  });
+  return a ? a.prix * qnt_demande : 0;   //if else
 }
 
-console.log(info_potion(10, 3));
+console.log(prix_potion("potion_soin", inventaire, 3));
 
-//
+// exo 3 Fabrication de potion
+
+// function creation_potion(id_p, prix_p, )
