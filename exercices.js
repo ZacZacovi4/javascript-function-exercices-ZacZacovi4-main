@@ -31,10 +31,10 @@ console.log(salutations(nom_sorcier));
  * @returns {number} prix_tot
  */
 function prix_potion(potion_id, inventaire, qnt_demande = 1){
-  const a =inventaire.find(function(item){
+  const prix_totale =inventaire.find(function(item){
       return item.id === potion_id;
   });
-  return a ? a.prix * qnt_demande : 0;   //if else
+  return prix_totale ? prix_totale.prix * qnt_demande : 0;   //if else
 }
 
 console.log(prix_potion("potion_soin", inventaire, 3));
@@ -58,3 +58,40 @@ function creation_potion(id_p, prix_p, stock_p){
 
 creation_potion("potion de force", 10, 5);
 
+// exo 4 Ajout de nouvelles potions dans l'inventaire
+/**
+ * 
+ * @param {Array} inventaire 
+ * @param {object} potion 
+ */
+function ajout_potion(inventaire, potion){
+  // Recherche si la potion existe déjà dans l'inventaire (correspondance va donner sois l'index de l'object avec lequel ça match, sois -1 si n'a pas de match)
+    const correspondance = inventaire.findIndex(object => object.id === potion.id);
+
+    if (correspondance !== -1){
+      // La potion existe déjà, on met à jour le prix et on ajoute le stock
+      inventaire[correspondance].prix = potion.prix; // Met à jour le prix de la potion
+      inventaire[correspondance].stock = potion.stock; // Met à jour le stock de la potion
+    }else{
+      // La potion n'existe pas, on l'ajoute à l'inventaire
+      inventaire.push(potion);
+    }
+    // Tri de l'inventaire du plus cher au moins cher
+    inventaire.sort((a,b) => b.prix - a.prix);
+}
+
+potions_1 = {
+  id: "potion_vigueur",
+  prix: 15,
+  stock: 5,
+},
+potions_2 = {
+  id: "potion_soin",
+  prix: 25,
+  stock: 2,
+}
+
+ajout_potion(inventaire, potions_1);
+console.log (inventaire);
+ajout_potion(inventaire, potions_2);
+console.log (inventaire);
