@@ -11,15 +11,25 @@ const inventaire = [
     prix: 10,
     stock: 0,
   },
+  {
+    id: "potion_vigueur",
+    prix: 25,
+    stock: 14,
+  },
+  {
+    id: "potion_force",
+    prix: 15,
+    stock: 7,
+  },
 ];
 
 // exo 1 Salutation Aventurier
 
 function salutations(nom_sorcier_new){
     return (`Salutations Aventurier ! Je me nomme ${nom_sorcier_new} pour vous servir.`);
-};
+}
 
-console.log(salutations(nom_sorcier));
+// console.log(salutations(nom_sorcier));
 
 // exo 2 Quel est le tarif d'une potion ?
 
@@ -37,7 +47,7 @@ function prix_potion(potion_id, inventaire, qnt_demande = 1){
   return prix_totale ? prix_totale.prix * qnt_demande : 0;   //if else
 }
 
-console.log(prix_potion("potion_soin", inventaire, 3));
+// console.log(prix_potion("potion_soin", inventaire, 3));
 
 // exo 3 Fabrication de potion
 /**
@@ -56,7 +66,7 @@ function creation_potion(id_p, prix_p, stock_p){
   return potion;
 }
 
-creation_potion("potion de force", 10, 5);
+// creation_potion("potion de force", 10, 5);
 
 // exo 4 Ajout de nouvelles potions dans l'inventaire
 /**
@@ -91,7 +101,18 @@ potions_2 = {
   stock: 2,
 }
 
-ajout_potion(inventaire, potions_1);
-console.log (inventaire);
-ajout_potion(inventaire, potions_2);
-console.log (inventaire);
+// ajout_potion(inventaire, potions_1);
+// console.log (inventaire);
+// ajout_potion(inventaire, potions_2);
+// console.log (inventaire);
+
+//exo 5 Cherche moi les potions qui...
+
+function show_inventory(inventaire){
+  console.log(inventaire.filter(stock => stock.stock > 0));
+}
+show_inventory(inventaire);
+function show_abscent(inventaire){
+  console.log(inventaire.filter(stock => stock.stock === 0));
+}
+show_abscent(inventaire);
